@@ -9,6 +9,9 @@ Using Node, Hapi and React.
 
 This project was bootstrapped with [Create React App]
 
+The web client is currently designed for a FHD Android mobile screen. 
+
+
 Stack
 -----
 
@@ -40,6 +43,17 @@ $ docker build -t "simple-calculator" .
 $ docker run -p 3000:3000 -p 8000:8000 "simple-calculator" 
 ```
 
+Manual
+------
+
+Enter a first number
+Enter +
+Enter a second number
+Enter =
+
+Then it's possible to go on additioning numbers
+
+C button reset the calculator
 
 
 NPM Commands
