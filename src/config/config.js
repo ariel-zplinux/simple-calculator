@@ -1,0 +1,2 @@
+const SERVER_HOST = '192.168.0.8';
+exports.SERVER_HOST = SERVER_HOST
