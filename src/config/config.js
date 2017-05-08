@@ -1,2 +1,2 @@
-const SERVER_HOST = '192.168.0.8';
-exports.SERVER_HOST = SERVER_HOST
+exports.API_SERVER_HOST = '192.168.0.8';
+exports.API_SERVER_PORT = '8000';

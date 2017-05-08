@@ -13,11 +13,15 @@ RUN npm install
 # Bundle app source
 COPY . /usr/src/app
 
+# Switch to production mode
+RUN npm run build
+RUN npm install serve -g
+
 # Web server port
-EXPOSE 3000
+EXPOSE 5000
 
 # API server port
 EXPOSE 8000
 
 # run api and web server
-CMD npm run server & npm start
+CMD npm run server & npm run prod

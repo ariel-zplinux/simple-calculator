@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import '../style/Calculator.css';
 
-import {SERVER_HOST} from '../config/config.js'
-
+import {API_SERVER_HOST, API_SERVER_PORT} from '../config/config.js'
 
 import Button from './Button.js';
 import Display from './Display.js';
@@ -29,7 +28,7 @@ class Calculator extends Component {
         this.handleResetLoading = this.handleResetLoading.bind(this);        
     }
 
-    // update displayValue when a number is pressed
+    // update current number and displayValue when a digit is pressed
     handleButtonPressed(buttonValue) {
         // calculate new number after that a new digit has been pressed
         // new number = (old number * 10) + new digit
@@ -41,18 +40,14 @@ class Calculator extends Component {
     }
 
     // triggered by component display, after a timeout caused by loading flag set to true
-    // this timeout purpose is to simulate a waiting time
+    // this timeout purpose is to simulate a calculating time
     handleResetLoading() {        
         const {previous, current} = this.state
 
         // API call to perform the addition
-        // fetch(`http://192.168.0.8:8000/addition?previous=${previous}&current=${current}`)
-        fetch(`http://${SERVER_HOST}:8000/addition?previous=${previous}&current=${current}`)
+        fetch(`http://${API_SERVER_HOST}:${API_SERVER_PORT}/addition?previous=${previous}&current=${current}`)
             .then( (res) => res.text() )
             .then( (data) => {
-                console.log(data);
-                console.log(this.state.hiddenResult);
-
                 // handle case when a computer is wrong                
                 if (parseInt(data, 10) !== this.state.hiddenResult)
                     throw new Error("warning - server and client obtain different results");
@@ -76,10 +71,9 @@ class Calculator extends Component {
     // handle when the operator is pressed
     // the operator can be + or =
     handleAction(operand) {      
-        console.log('1 '+operand);
         switch(operand) {
             case '+' :
-                console.log('2 '+operand);            
+                // after + being pressed, the operator become =
                 this.setState({
                     previous: this.state.displayValue,
                     displayValue: 0,
@@ -88,13 +82,10 @@ class Calculator extends Component {
                 });                
                 break;
             case '=' :
-                console.log('3 '+operand);
+                // loading phase
                 this.setState({
-                    // previous: this.state.displayValue,
-                    displayValue: "WORKING",
+                    displayValue: "CALCULATING",
                     hiddenResult: parseInt(this.state.previous, 10) + parseInt(this.state.current, 10),
-                    // current: parseInt(this.state.previous, 10) + parseInt(this.state.current, 10),
-                    // operand: '=',
                     loading: true
                 });
                 
@@ -116,7 +107,6 @@ class Calculator extends Component {
     render() {
         return (
             <div className="Calculator">
-
                 <Display 
                     value={this.state.displayValue} 
                     loading={this.state.loading}

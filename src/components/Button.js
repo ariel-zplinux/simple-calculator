@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './Calculator.css';
+import '../style/Button.css';
 
 class Button extends Component {
     constructor(props){
@@ -7,7 +7,6 @@ class Button extends Component {
 
         this.action = this.action.bind(this);
     }
-
 
     action() {
         this.props.action(this.props.label);

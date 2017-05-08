@@ -1,0 +1,20 @@
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 100%;
+}
+
+.line-buttons {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+button {
+    font-size: 3.5em;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background: grey;
+    color: white;
+}

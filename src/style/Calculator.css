@@ -1,65 +1,17 @@
+/* For mobile portrait user experience 
+(tested on Android mobiles with HD and FHD screen) */
 .Calculator {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 2%;
-  width: 90%;
-  height: 90%;
-
+  display: block;
+  padding: 10px;
+  margin: 5px;
+  border: 2px solid #5D6063;
 }
 
-
-.buttons {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  height: 100%;
-}
-
-.line-buttons {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-}
-
-button {
-    font-size: 4em;
-    padding: 10px 20px;
-    margin-top: 10px;
-    background: grey;
-    color: white;
-}
-
-.Display {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: 5px 0; 
-
-    /*width: 100%;*/
-    font-size: 2em;
-    background: blue;
-    color: yellow;
-}
-
-.value {
-    margin: 0 auto;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 50px;
-  /*display: inline;*/
-}
-
-.App-logo-quiet {
-  /*animation: App-logo-spin infinite 20s linear;*/
-  height: 50px;
-  /*display: inline;*/
-}
-
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* For desktop user experience (resolution with width greater than 1080px)*/
+@media only screen and (min-width: 1081px){
+  .Calculator {
+    margin: 50px auto;
+    width: 20%;
+    border: 2px solid #5D6063;
+  }
 }

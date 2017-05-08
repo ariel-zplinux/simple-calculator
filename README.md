@@ -9,9 +9,6 @@ Using Node, Hapi and React.
 
 This project was bootstrapped with [Create React App]
 
-The web client is currently designed for a FHD Android mobile screen. 
-
-
 Stack
 -----
 
@@ -24,14 +21,29 @@ Stack
 Quick Start
 -----------
 
-You should change SERVER_HOST in src/config/config.js to your WAN or LAN address.
+You should change API_SERVER_HOST in src/config/config.js to your WAN or LAN address.
 
 ```shell
 $ git clone https://github.com/ariel-zplinux/simple-calculator.git
 $ cd simple-calculator
 $ npm install
-$ npm run server
-$ npm start # in a separate terminal
+$ npm run server # API server on http://host:8000
+```
+
+Then, in a separate terminal.
+
+For development mode:
+
+```shell
+$ npm start # Web server on http://host:3000
+```
+
+Or for production mode
+
+```shell
+$ npm run build
+$ npm install serve -g
+$ npm run prod # Web server on http://host:5000
 ```
 
 Or with Docker
@@ -40,20 +52,23 @@ Or with Docker
 $ git clone https://github.com/ariel-zplinux/simple-calculator.git
 $ cd simple-calculator
 $ docker build -t "simple-calculator" .
-$ docker run -p 3000:3000 -p 8000:8000 "simple-calculator" 
+$ docker run -p 5000:5000 -p 8000:8000 "simple-calculator" 
 ```
 
 Manual
 ------
 
-Enter a first number
-Enter +
-Enter a second number
-Enter =
+- Enter a first number
 
-Then it's possible to go on additioning numbers
+- Enter +
 
-C button reset the calculator
+- Enter a second number
+
+- Enter =
+
+Then it's possible to go on additionning numbers
+
+C button resets the calculator
 
 
 NPM Commands
@@ -62,7 +77,9 @@ NPM Commands
 |Command|Description|
 |---|---|
 |npm run server|Start API server @**localhost:8000**| 
-|npm start|Start web server @**localhost:3000**| 
+|npm start|Start web server in development mode @**localhost:3000**| 
+|npm run build|Prepare production mode|
+|npm run prod|Start web server in production mode @**localhost:5000**|
 |npm install|Install dependencies |
 
 API endpoint
@@ -72,6 +89,9 @@ API endpoint
 |---|---|---|---|
 |GET|/addition|previous, current|Add previous and current|
 
+Screenshot
+----------
+![alt text](https://github.com/ariel-zplinux/simple-calculator/raw/master/src/assets/images/calculator.jpg "Simple-calculator on Nexus 4")
 
 Links
 -----
