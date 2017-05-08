@@ -46,6 +46,8 @@ $ npm install serve -g
 $ npm run prod # Web server on http://host:5000
 ```
 
+-----------
+
 Or with Docker
 
 ```shell
