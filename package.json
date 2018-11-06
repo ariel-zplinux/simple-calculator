@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "concurrently": "^4.0.1",
     "hapi": "^16.1.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
@@ -12,7 +13,7 @@
   },
   "scripts": {
     "server": "node src/server/server.js",
-    "start": "react-scripts start",
+    "start": "concurrently --kill-others \"react-scripts start\" \"node src/server/server.js\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
